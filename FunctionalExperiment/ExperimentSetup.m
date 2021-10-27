@@ -1,4 +1,4 @@
-function [n_trials,trial,alpha,image_length,contrast_changes,lower_speed_tresh,higher_speed_tresh,distance_to_change,contrast_dt,AvgElapsedTime] = ExperimentSetup(n_trial,img_length,cntrst_stps,lw_tresh,high_tresh)
+function [n_trials,trial,alpha,image_length,lower_speed_tresh,higher_speed_tresh,distance_to_change,contrast_dt,AvgElapsedTime] = ExperimentSetup(n_trial,img_length,cntrst_stps,lw_tresh,high_tresh)
 n_trials = n_trial;
 trial=1;
 alpha = 0; %analogous to contrast in this approach 
