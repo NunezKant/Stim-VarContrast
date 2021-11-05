@@ -6,7 +6,7 @@ clear;
 rwrd_img = rwrd_img - grey;
 Norwrd_img = Norwrd_img - grey;
 %% MQTT Setup
-myMQTT=mqtt('tcp://127.0.0.1');
+myMQTT=mqtt('tcp://127.0.0.1'); 
 LickSub = subscribe(myMQTT,'LickPort/','QoS',0);
 MoveSub = subscribe(myMQTT,'sphericalTreadmill/Data','QoS',0); 
 MoveMsgCount =  0;
