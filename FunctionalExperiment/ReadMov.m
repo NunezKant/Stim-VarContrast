@@ -1,11 +1,11 @@
-function [SubjM,MoveMsgCount] = ReadMov(MoveSub,MoveMsgCount)
-if MoveSub.MessageCount > MoveMsgCount
-    pause(2/1000); 
-    MoveMsgCount = MoveMsgCount + 1;
-    msg = MoveSub.read;
-    m = jsondecode(msg{1});
-    SubjM(end+1,:) = [-m.pitch m.roll m.yaw distance trial now];
-end       
+function [SubjM,MoveMsgCount] = ReadMov(SubjM,MoveSub,MoveMsgCount,distance,trial)
+    if MoveSub.MessageCount > MoveMsgCount
+        pause(2/1000); 
+        MoveMsgCount = MoveMsgCount + 1;
+        msg = MoveSub.read;
+        m = jsondecode(msg{1});
+        SubjM(end+1,:) = [-m.pitch m.roll m.yaw distance trial now];
+    end       
 %         if (MoveSub.MessageCount - MoveMsgCount) > 1
 %             buffer = 0;
 %             while MoveSub.MessageCount > MoveMsgCount

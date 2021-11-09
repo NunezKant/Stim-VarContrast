@@ -1,17 +1,17 @@
 sca;
 close all;
 clear;
-[screenNumber,white,black,grey] = PsychInit();
+[screenNumber,white,black,grey] = PsychInit(1);
 [rwrd_img,Norwrd_img] = UploadImages();
 rwrd_img = rwrd_img - grey;
 Norwrd_img = Norwrd_img - grey;
 %% MQTT Setup
-myMQTT=mqtt('tcp://127.0.0.1'); 
+myMQTT=mqtt('tcp://169.254.0.10'); 
 LickSub = subscribe(myMQTT,'LickPort/','QoS',0);
 MoveSub = subscribe(myMQTT,'sphericalTreadmill/Data','QoS',0); 
 MoveMsgCount =  0;
 LickMsgCount =  0; 
-[trials,trial,alpha,img_len,lwr_trsh,hgh_trsh,distToChange,cntrst_dx,aet] = ExperimentSetup(5,300,200,.05,.2);
+[trials,trial,alpha,img_len,lwr_trsh,hgh_trsh,distToChange,cntrst_dx,aet] = ExperimentSetup(5,300,200,.05,1);
 fprintf('\nIt will take an average estimated time of %6.2f min to finish this experiment\n',aet);
 pause(3);
 %% Experiment 
@@ -19,11 +19,11 @@ try
     %% Texture making
     PsychImaging('PrepareConfiguration');
     PsychImaging('AddTask', 'General', 'FloatingPoint32BitIfPossible');
-    [win, winRect] = PsychImaging('OpenWindow', screenNumber,grey,[1920 0 1920*2-1 900*2-1]);
+    [win, winRect] = PsychImaging('OpenWindow', screenNumber,grey);
     % rectsize =[top-left-x top-left-y bottom-right-x bottom-left-y]
     Screen('ColorRange', win, 1, 0);
-    imagtex_reward = Screen('MakeTexture', win, img1 , [], [], 1);
-    imagtex_non_reward = Screen('MakeTexture', win, img2 , [], [], 1);
+    imagtex_reward = Screen('MakeTexture', win, rwrd_img , [], [], 1);
+    imagtex_non_reward = Screen('MakeTexture', win, Norwrd_img , [], [], 1);
     
     %% Random texture selection
    [texture_toshow,reward] = RandomImgSelection(imagtex_reward,imagtex_non_reward);
@@ -38,7 +38,7 @@ try
         Screen('DrawingFinished', win);
     %% Read movement
         pause(2/1000); 
-        [SubjM,MoveMsgCount] = ReadMov(MoveSub,MoveMsgCount);
+        [SubjM,MoveMsgCount] = ReadMov(SubjM,MoveSub,MoveMsgCount,distance,trial);
         combinedSpeed = sum(SubjM(end,1:2).^2)^0.5;
     %% Read licks       
         pause(2/1000);  
