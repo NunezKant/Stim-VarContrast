@@ -1,10 +1,13 @@
 sca;
 close all;
 clear;
-[screenNumber,white,black,grey] = PsychInit(1);
+[screenNumber,white,black,grey] = PsychInit();
 [rwrd_img,Norwrd_img] = UploadImages();
-rwrd_img = rwrd_img - grey;
-Norwrd_img = Norwrd_img - grey;
+rwrd_img = rwrd_img + (grey-mean2(rwrd_img)) - grey;
+Norwrd_img = Norwrd_img + (grey-mean2(Norwrd_img)) - grey;
+[width, height]=Screen('WindowSize', screenNumber);
+rwrd_img = imresize(rwrd_img, [width height]);
+Norwrd_img = imresize(Norwrd_img, [width height]);
 %% MQTT Setup
 myMQTT=mqtt('tcp://169.254.0.10'); 
 LickSub = subscribe(myMQTT,'LickPort/','QoS',0);
