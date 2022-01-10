@@ -2,7 +2,7 @@ function waterCalibration(duration,manual)
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
 InitializeMatlabOpenGL(1);
-myMQTT = mqtt('tcp://127.0.0.1');
+myMQTT = mqtt('tcp://169.254.0.10');
 pause on
 openCount = 0;
 givewater = 0;
