@@ -24,15 +24,17 @@ while 1
             givewater = 0;
             openCount = openCount + 1; 
         end
+        pause(1);
     else
         openCount = openCount + 1; 
         publish(myMQTT, 'miniBCS/Valve1/Pulse', num2str(duration));
 %         pause(5+rand(1)*3);
-        pause(0.3);
+        pause(1);
     end
 end
     disp(['Open duration = ' num2str(duration) ' ms']);
     disp(['Open times = ' num2str(openCount)]);
     sca
+    clear myMQTT
 end
 
