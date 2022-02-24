@@ -1,8 +1,0 @@
-function [texture_toshow] = RandomImgSelection(imagtex_reward,imagtex_non_reward,imagtex_new_reward,rewarded,new_exemplar)
-    if reward && ~new_exemplar
-        texture_toshow=imagtex_reward;
-    elseif reward && new_exemplar
-        texture_toshow=imagtex_new_reward;
-    else 
-end
-
