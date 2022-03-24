@@ -1,9 +1,10 @@
-function [rwrd_img,Norwd_img,New_rwrd_img] = UploadImages()
+function [rwrd_img,Norwd_img,New_rwrd_img,New_nrwrd_img] = UploadImages()
     % [file_r,path_r] = uigetfile('../data/',{'*';'*.png';'*.jpeg'},'Select the rewarded texture');
     % [file_nr,path_nr] = uigetfile('../data/',{'*';'*.png';'*.jpeg'},'Select the NON rewarded texture');
     rwrd_img = imread('./data/leaves.jpg');
     Norwd_img = imread('./data/circles.jpg');
     New_rwrd_img = imread('./data/newleaves.jpg');
+    New_nrwrd_img = imread('./data/newcircles.jpg');
 
     if length(size(rwrd_img))>2
         rwrd_img = im2double(rgb2gray(rwrd_img));
@@ -19,6 +20,11 @@ function [rwrd_img,Norwd_img,New_rwrd_img] = UploadImages()
         New_rwrd_img = im2double(rgb2gray(New_rwrd_img));
     else
         New_rwrd_img = im2double(New_rwrd_img);
+    end
+    if length(size(New_nrwrd_img))>2
+        New_nrwrd_img = im2double(rgb2gray(New_nrwrd_img));
+    else
+        New_nrwrd_img = im2double(New_nrwrd_img);
     end
 end
 
