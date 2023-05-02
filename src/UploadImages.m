@@ -7,16 +7,31 @@ function [rwrd_img,Norwd_img,New_rwrd_img,New_nrwrd_img] = UploadImages(texturec
         Norwd_img = imread('./data/circles.jpg');
         New_rwrd_img = imread('./data/newleaves.jpg');
         New_nrwrd_img = imread('./data/newcircles.jpg');
-        case "dryrocks"
-        rwrd_img = imread('./data/dryland.jpg');
-        Norwd_img = imread('./data/rocks.jpg');
-        New_rwrd_img = imread('./data/newdryland.jpg');
-        New_nrwrd_img = imread('./data/newrocks.jpg');
-        case "mandalasquares"
+        case "circlesleaves"
+        rwrd_img = imread('./data/circles.jpg');
+        Norwd_img = imread('./data/leaves.jpg');
+        New_rwrd_img = imread('./data/newcircles.jpg');
+        New_nrwrd_img = imread('./data/newleaves.jpg');
+        case "tilessquares"
         rwrd_img = imread('./data/mandala.jpg');
         Norwd_img = imread('./data/squares.jpg');
         New_rwrd_img = imread('./data/newmandala.jpg');
-        New_nrwrd_img = imread('./data/newsquares.jpg');   
+        New_nrwrd_img = imread('./data/newsquares.jpg');
+        case "squarestiles"
+        rwrd_img = imread('./data/squares.jpg');
+        Norwd_img = imread('./data/mandala.jpg');
+        New_rwrd_img = imread('./data/newsquares.jpg');
+        New_nrwrd_img = imread('./data/newmandala.jpg');
+        case "leavestiles"
+        rwrd_img = imread('./data/leaves.jpg');
+        Norwd_img = imread('./data/mandala.jpg');
+        New_rwrd_img = imread('./data/newleaves.jpg');
+        New_nrwrd_img = imread('./data/newmandala.jpg');
+        case "tilesleaves"
+        rwrd_img = imread('./data/mandala.jpg');
+        Norwd_img = imread('./data/leaves.jpg');
+        New_rwrd_img = imread('./data/newmandala.jpg');
+        New_nrwrd_img = imread('./data/newleaves.jpg');
     end
 
     if length(size(rwrd_img))>2
