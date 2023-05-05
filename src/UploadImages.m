@@ -32,6 +32,11 @@ function [rwrd_img,Norwd_img,New_rwrd_img,New_nrwrd_img] = UploadImages(texturec
         Norwd_img = imread('./data/leaves.jpg');
         New_rwrd_img = imread('./data/newmandala.jpg');
         New_nrwrd_img = imread('./data/newleaves.jpg');
+        case "gray"
+        rwrd_img = imread('./data/gray.jpg');
+        Norwd_img = imread('./data/gray.jpg');
+        New_rwrd_img = imread('./data/gray.jpg');
+        New_nrwrd_img = imread('./data/gray.jpg');
     end
 
     if length(size(rwrd_img))>2
